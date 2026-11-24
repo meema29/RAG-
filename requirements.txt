@@ -1,0 +1,6 @@
+pandas
+numpy
+sentence-transformers
+chromadb
+google-genai
+jupyter
