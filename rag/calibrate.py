@@ -3,8 +3,7 @@ pick SIMILARITY_THRESHOLD from data instead of guessing. No API key needed.
 
 Usage: python calibrate.py
 """
-from rag import retrieve
-
+from .rag import retrieve
 IN_SCOPE = [
     "Which products contain vitamin C?",
     "Quels produits sont bons pour les cheveux secs ?",

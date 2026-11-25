@@ -10,8 +10,7 @@ from google import genai
 from google.genai import errors, types
 from sentence_transformers import SentenceTransformer
 
-import config
-
+from . import config
 load_dotenv(config.ROOT / ".env")
 
 NOT_FOUND_MESSAGE = (
@@ -28,9 +27,22 @@ Rules:
 3. If the PRODUCTS do not contain the answer, set "answer" to exactly:
    "NOT_IN_DATA" and "used" to [].
 4. If the information is incomplete, say what is missing.
-5. Answer in the language of the question.
-6. Prices are in Algerian dinars (DA).
-7. In "used", list the numbers of the PRODUCTS you actually relied on.
+5. When the user asks for multiple products, a list, or uses plural
+   wording (e.g. "which products"), include ALL relevant products
+   found in the provided PRODUCTS, not just one. Do not omit
+   relevant products from the retrieved context.
+6. LANGUAGE RULE (IMPORTANT):
+   - Identify the language of the user's latest question.
+   - Write the entire answer in that same language.
+   - If the question is in English, answer entirely in English.
+   - If the question is in French, answer entirely in French.
+   - If the question is in Arabic, answer entirely in Arabic.
+   - Do not switch to French by default.
+   - Product names and brand names must remain unchanged.
+   - This rule applies even if previous conversation messages
+     were written in another language.
+7. Prices are in Algerian dinars (DA).
+8. In "used", list the numbers of the PRODUCTS you actually relied on.
 Return JSON: {"answer": string, "used": [int, ...]}"""
 
 

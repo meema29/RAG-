@@ -1,15 +1,16 @@
 """Central configuration. Every path is relative to the project root."""
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
-ROOT = Path(__file__).resolve().parent
-
+ROOT = Path(__file__).resolve().parent.parent
+load_dotenv(ROOT / ".env")
 DATA_PATH = ROOT / "data" / "processed" / "pharmaly_products_rag_ready.csv"
-DB_PATH = ROOT / "chroma_db"
+DB_PATH = ROOT / "rag" / "chroma_db"
 COLLECTION_NAME = "pharmaly_products"
 
 EMBEDDING_MODEL = "paraphrase-multilingual-MiniLM-L12-v2"
-LLM_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
+LLM_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
 
 TOP_K = 5
 # Cosine similarity below which a result is considered unrelated.

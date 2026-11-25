@@ -10,8 +10,7 @@ import chromadb
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 
-import config
-
+from . import config
 
 def clean(value, default="Not specified"):
     if pd.isna(value) or str(value).strip() == "":
