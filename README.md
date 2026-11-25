@@ -128,15 +128,15 @@ This section describes how the implemented system works, from initial indexing t
 
 The knowledge base is built before the chatbot is used.
 
-**Step 1 — Load and clean the dataset**
+**Step 1 Load and clean the dataset**
 
 The system loads the processed product CSV and removes incomplete, insufficiently described, and duplicated records.
 
-**Step 2 — Create product documents**
+**Step 2 Create product documents**
 
 Each remaining product is transformed into a textual document containing its name, brand, category, price, and description.
 
-**Step 3 — Generate embeddings**
+**Step 3 Generate embeddings**
 
 The project uses the following Sentence Transformers model:
 
@@ -146,7 +146,7 @@ The embedding model converts each product document into a numerical vector repre
 
 Embeddings are normalized before being stored.
 
-**Step 4 — Store information in ChromaDB**
+**Step 4 Store information in ChromaDB**
 
 The generated vectors, textual documents, and product metadata are stored in a persistent ChromaDB collection.
 
@@ -154,7 +154,7 @@ The collection uses cosine similarity as its distance metric.
 
 Product metadata includes the product name, brand, category, current price, and original product URL.
 
-**Step 5 — Persistent indexing**
+**Step 5 Persistent indexing**
 
 The vector database is stored locally in `rag/chroma_db/`.
 
@@ -369,8 +369,8 @@ The demonstration covers several important behaviors of the system.
 
 For the complete examples and recorded outputs, see:
 
-- `demo/qsts.md` — demonstration questions.
-- `demo/answers.md` — example chatbot interactions and source URLs.
+- `demo/qsts.md`  demonstration questions.
+- `demo/answers.md`  example chatbot interactions and source URLs.
 
 ## 11. Evaluation and Testing
 
@@ -444,10 +444,10 @@ The project was developed collaboratively, with responsibilities divided across 
 
 | Member | Area | Main contribution |
 |---|---|---|
-| Member 1 | Data preparation and coordination | Dataset inspection, cleaning, document preparation, source metadata preservation, and end-to-end integration |
-| Member 2 | Embeddings and vector database | Embedding model selection, vector generation, ChromaDB configuration, and persistent indexing |
-| Member 3 | Retrieval and source citations | Query processing, semantic search, similarity filtering, threshold calibration, and retrieval evaluation |
-| Member 4 | LLM and chatbot | Gemini integration, prompt engineering, context-grounded generation, refusal behavior, conversation handling, and chatbot interface |
+| Meriem Hamzaoui | Data preparation and coordination | Dataset inspection, cleaning, document preparation, source metadata preservation, and end-to-end integration |
+| Ahlem Khaloua | Embeddings and vector database | Embedding model selection, vector generation, ChromaDB configuration, and persistent indexing |
+| Rahima Hamouda | Retrieval and source citations | Query processing, semantic search, similarity filtering, threshold calibration, and retrieval evaluation |
+| Nesrine Oulhadj | LLM and chatbot | Gemini integration, prompt engineering, context-grounded generation, refusal behavior, conversation handling, and chatbot interface |
 
 The final implementation brings these components together in a single RAG pipeline.
 
